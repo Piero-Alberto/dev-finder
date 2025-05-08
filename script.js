@@ -9,9 +9,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const followingSpan = document.getElementById('following');
   const publicReposSpan = document.getElementById('public_repos');
   const htmlUrlLink = document.getElementById('html_url');
+  const locationSpan = document.getElementById('location');
+
 
   // Mostrar perfil falso de "Octopus Dev" al cargar la página
-  avatarImg.src = 'https://avatars.githubusercontent.com/u/9919?v=4'; // Un avatar genérico de GitHub
+  avatarImg.src = 'https://avatars.githubusercontent.com/u/583231?v=4'; // Un avatar genérico de GitHub
   nameSpan.textContent = 'Octopus Dev';
   bioSpan.textContent = 'Desarrollador web entusiasta con muchos tentáculos para codificar.';
   followersSpan.textContent = '1000';
@@ -52,6 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
           avatarImg.src = data.avatar_url;
           nameSpan.textContent = data.name || 'No disponible';
           bioSpan.textContent = data.bio || 'No disponible';
+          locationSpan.textContent = data.location || 'No disponible';
           followersSpan.textContent = data.followers;
           followingSpan.textContent = data.following;
           publicReposSpan.textContent = data.public_repos;

@@ -1,34 +1,48 @@
+:root {
+  --background-color: #f4f4f4; /* Fondo claro */
+  --text-color: #333; /* Texto oscuro */
+  --accent-color: #028cf5; /* Azul primario para botones/enlaces */
+  --container-background: white; /* Fondo de contenedores */
+  --border-color: #ddd; /* Color de bordes */
+  --box-shadow-color: rgba(0, 0, 0, 0.1); /* Color de la sombra */
+  --avatar-border-color: #eee; /* Color del borde del avatar */
+}
+
 body {
   font-family: 'helvetica';
   margin: 20px;
-  background-color: #f4f4f4;
-  color: #333;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1 {
   text-align: center;
-  color: #333;
+  color: var(--text-color);
   margin-bottom: 20px;
 }
 
 .search-container {
   display: flex;
   justify-content: center;
-  align-items: center; /* Opcional: para centrar verticalmente si hay más contenido alrededor */
-  margin-bottom: 20px; /* Añade un poco de espacio debajo del buscador */
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .search-container > input[type="text"] {
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-color);
   border-radius: 5px;
   margin-right: 10px;
   width: 500px;
   font-size: 16px;
+  background-color: var(--container-background);
+  color: var(--text-color);
+  transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
 .search-container > button {
-  background-color: #00c8a7;
+  background-color: var(--accent-color);
   color: white;
   padding: 10px 15px;
   border: none;
@@ -39,21 +53,21 @@ h1 {
 }
 
 .search-container > button:hover {
-  background-color: #21e28b;
+  background-color: #519aff;
 }
-
 
 #resultados {
   margin-top: 30px;
   padding: 20px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-color);
   border-radius: 10px;
-  background-color: white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: var(--container-background);
+  box-shadow: 0 2px 4px var(--box-shadow-color);
   text-align: center;
-  max-width: 800px; /* Define un ancho máximo, puedes ajustar este valor */
-  margin-left: auto; /* Centra horizontalmente al establecer los márgenes izquierdo y derecho en auto */
+  max-width: 800px;
+  margin-left: auto;
   margin-right: auto;
+  transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
 }
 
 .avatar {
@@ -61,21 +75,22 @@ h1 {
   height: 120px;
   border-radius: 50%;
   margin-bottom: 15px;
-  border: 3px solid #eee;
+  border: 3px solid var(--avatar-border-color);
 }
 
 #resultados p {
   margin-bottom: 8px;
   font-size: 16px;
+  color: var(--text-color);
 }
 
 #resultados strong {
   font-weight: bold;
-  color: #555;
+  color: #555; /* Mantenemos este color para énfasis, puedes cambiarlo en dark mode si lo deseas */
 }
 
 #resultados a {
-  color: #007bff;
+  color: var(--accent-color);
   text-decoration: none;
   transition: color 0.3s ease;
 }
@@ -83,4 +98,34 @@ h1 {
 #resultados a:hover {
   color: #0056b3;
   text-decoration: underline;
+}
+
+/* Estilos para el Dark Mode */
+.dark-mode {
+  --background-color: #1a1a1a; /* Fondo oscuro */
+  --text-color: #eee; /* Texto claro */
+  --accent-color: #89bdd3; /* Azul más claro para dark mode */
+  --container-background: #2c2c2c; /* Fondo oscuro para contenedores */
+  --border-color: #555; /* Borde más oscuro */
+  --box-shadow-color: rgba(0, 0, 0, 0.5); /* Sombra más oscura */
+  --avatar-border-color: #333; /* Borde del avatar más oscuro */
+}
+
+.dark-mode-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+    background-color: transparent;
+    color: var(--text-color); /* Usa la variable de color de texto para que cambie con el tema */
+    transition: color 0.3s ease;
+    z-index: 10; /* Asegura que esté por encima de otros elementos */
+}
+
+.dark-mode-toggle i {
+    font-size: 1.2em;
 }

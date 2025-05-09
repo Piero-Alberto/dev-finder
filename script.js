@@ -10,18 +10,48 @@ document.addEventListener('DOMContentLoaded', () => {
   const publicReposSpan = document.getElementById('public_repos');
   const htmlUrlLink = document.getElementById('html_url');
   const locationSpan = document.getElementById('location');
+  const body = document.body;
+  const darkModeToggle = document.getElementById('darkModeToggle');
+
+  // Aplicar el tema guardado al cargar la página
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark') {
+      enableDarkMode();
+  } else {
+      enableLightMode();
+  }
+
+  function enableDarkMode() {
+      body.classList.add('dark-mode');
+      darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>'; // Cambiar al icono del sol
+      localStorage.setItem('theme', 'dark');
+  }
+
+  function enableLightMode() {
+      body.classList.remove('dark-mode');
+      darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>'; // Cambiar al icono de la luna
+      localStorage.setItem('theme', 'light');
+  }
+
+  darkModeToggle.addEventListener('click', () => {
+      if (body.classList.contains('dark-mode')) {
+          enableLightMode();
+      } else {
+          enableDarkMode();
+      }
+  });
 
 
-  // Mostrar perfil falso de "Octopus Dev" al cargar la página
-  avatarImg.src = 'https://avatars.githubusercontent.com/u/583231?v=4'; // Un avatar genérico de GitHub
+  avatarImg.src = 'https://avatars.githubusercontent.com/u/583231?v=4';
   nameSpan.textContent = 'Octopus Dev';
   bioSpan.textContent = 'Desarrollador web entusiasta con muchos tentáculos para codificar.';
   followersSpan.textContent = '1000';
   followingSpan.textContent = '50';
   publicReposSpan.textContent = '20';
-  htmlUrlLink.href = 'https://github.com/octocat'; // Un perfil de ejemplo
+  htmlUrlLink.href = 'https://github.com/octocat';
   htmlUrlLink.textContent = 'Ver perfil';
   resultadosDiv.style.display = 'block';
+  locationSpan.textContent = 'San Francisco';
 
   buscarButton.addEventListener('click', () => {
       const username = usernameInput.value.trim();

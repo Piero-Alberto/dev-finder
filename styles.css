@@ -9,7 +9,7 @@
 }
 
 body {
-  font-family: 'helvetica';
+  font-family: 'roboto slab','helvetica';
   margin: 20px;
   background-color: var(--background-color);
   color: var(--text-color);
